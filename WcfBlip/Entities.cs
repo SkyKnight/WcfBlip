@@ -78,6 +78,12 @@ namespace WcfBlip
         [DataMember(Name="user_path")]
         public string UserPath { get; set; }
 
+        public string User
+        {
+            get { return this.UserPath.Substring(this.UserPath.LastIndexOf('/') + 1); }
+        }
+
+
         [DataMember(Name="recipient_path")]
         public string RecipientPath { get; set; }
 
@@ -192,6 +198,9 @@ namespace WcfBlip
 
         [DataMember(Name="shortcode")]
         public string Shortcode { get; set; }
+
+        [DataMember(Name = "url")]
+        public string Url { get; set; }
     }
 
     [DataContract]

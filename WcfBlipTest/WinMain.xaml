@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WcfBlipTest.WinMain"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Blip!" Height="348" Width="709">
+    Title="Blip!" Height="348" Width="709" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <TextBox Height="23" Margin="64,9,0,0" Name="txtLogin" VerticalAlignment="Top" TabIndex="0" HorizontalAlignment="Left" Width="120" />
         <PasswordBox Height="23" Margin="293,12,274,0" Name="txtPassword" TabIndex="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="150" />
@@ -10,7 +10,7 @@
         <my:DataGrid AutoGenerateColumns="False" Margin="12,41,93,12" Name="dbgBlip" xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit">
             <my:DataGrid.Columns>
                 <my:DataGridTextColumn Header="Data" IsReadOnly="True" Binding="{Binding CreatedAt}" />
-                <my:DataGridTextColumn Header="Użytkownik" IsReadOnly="True" Binding="{Binding UserPath}" />
+                <my:DataGridTextColumn Header="Użytkownik" IsReadOnly="True" Binding="{Binding User}" />
                 <my:DataGridTextColumn Header="Treść" IsReadOnly="True" Binding="{Binding Body}" />
                 <my:DataGridTextColumn Header="Przez" IsReadOnly="True" Binding="{Binding Transport.Name}" />
             </my:DataGrid.Columns>

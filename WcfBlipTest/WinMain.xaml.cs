@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Xml.Linq;
 using WcfBlip;
 
 namespace WcfBlipTest
@@ -25,8 +26,16 @@ namespace WcfBlipTest
 
         public WinMain()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Load username and password from config.xml file
+            //due to faster debuging stuff
+            ConfigFile.LoadConfig(ref txtLogin,ref txtPassword);
+        }
+
 
         private bool PrepareBlip()
         {
@@ -64,5 +73,13 @@ namespace WcfBlipTest
                     break;
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Saving current setting of username and password
+            ConfigFile.SaveConfig(txtLogin, txtPassword);
+        }
+
+        
     }
 }

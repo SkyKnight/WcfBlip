@@ -386,6 +386,10 @@ namespace WcfBlip
         [OperationContract(Name = "shortlinksAllSince")]
         [WebGet(UriTemplate = "/shortlinks/{id}/all_since", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Shortlink[] GetAllShortlinksSince(string id);
+
+        [OperationContract(Name = "createShortlinks")]
+        [WebInvoke(UriTemplate = "/shortlinks?shortlink[original_link]={original_link}", Method = "POST", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
+        Shortlink CreateShortlink(string original_link);
         #endregion
 
         #region dashboard
