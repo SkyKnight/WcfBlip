@@ -11,6 +11,11 @@ namespace WcfBlip
     public interface IBlipApi
     {
         #region updates
+        /// <summary>
+        /// Gets user update  by id
+        /// </summary>
+        /// <param name="id">Update id</param>
+        /// <returns>Returns Update class</returns>
         [OperationContract]
         [WebGet(UriTemplate = "/updates/{id}", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Update GetUpdate(string id);
@@ -19,6 +24,11 @@ namespace WcfBlip
         [WebGet(UriTemplate = "/updates", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Update[] GetUpdates();
 
+        /// <summary>
+        /// Gets user updates limited by number
+        /// </summary>
+        /// <param name="limit">Number of returned updates (in string)</param>
+        /// <returns></returns>
         [OperationContract(Name = "updatesLimit")]
         [WebGet(UriTemplate = "/updates?limit={limit}", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Update[] GetUpdates(string limit);
@@ -370,7 +380,7 @@ namespace WcfBlip
         Picture[] GetAllPicturesSince(string id);
         #endregion
 
-        #region shortcuts
+        #region shortlinks
         [OperationContract(Name = "shortlinksAll")]
         [WebGet(UriTemplate = "/shortlinks/all", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Shortlink[] GetAllShortlinks();
@@ -387,6 +397,11 @@ namespace WcfBlip
         [WebGet(UriTemplate = "/shortlinks/{id}/all_since", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Shortlink[] GetAllShortlinksSince(string id);
 
+        /// <summary>
+        /// Creates shortlink like: http://rdir.pl/{shortcode}
+        /// </summary>
+        /// <param name="original_link">URL to which shorten link point to</param>
+        /// <returns>Returns Shortlink class with Url property which holds shorten url</returns>
         [OperationContract(Name = "createShortlinks")]
         [WebInvoke(UriTemplate = "/shortlinks?shortlink[original_link]={original_link}", Method = "POST", BodyStyle = WebMessageBodyStyle.Bare, ResponseFormat = WebMessageFormat.Json)]
         Shortlink CreateShortlink(string original_link);

@@ -23,6 +23,9 @@ namespace WcfBlip
 
         private DateTime createdAt;
 
+        /// <summary>
+        /// Datetime formated for Blip
+        /// </summary>
         [DataMember(Name="created_at")]
         public string CreatedAtAsString { 
             get
@@ -78,6 +81,9 @@ namespace WcfBlip
         [DataMember(Name="user_path")]
         public string UserPath { get; set; }
 
+        /// <summary>
+        /// Name of user from parsing UserPath
+        /// </summary>
         public string User
         {
             get { return this.UserPath.Substring(this.UserPath.LastIndexOf('/') + 1); }
@@ -164,7 +170,9 @@ namespace WcfBlip
         public int Id { get; set; }
 
         private DateTime createdAt;
-
+        /// <summary>
+        /// Datetime formated for Blip
+        /// </summary>
         [DataMember(Name = "created_at")]
         public string CreatedAtAsString
         {
@@ -199,8 +207,11 @@ namespace WcfBlip
         [DataMember(Name="shortcode")]
         public string Shortcode { get; set; }
 
+        /// <summary>
+        /// Holds shorten link
+        /// </summary>
         [DataMember(Name = "url")]
-        public string Url { get; set; }
+        public string URL { get; set; }
     }
 
     [DataContract]
